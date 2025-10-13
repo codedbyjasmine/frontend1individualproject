@@ -4,6 +4,7 @@ const postTimeInput = document.getElementById('post-time');
 const titleInput = document.getElementById('post-title');
 const blogInput = document.getElementById('blog-input');
 
+
 function createPost(post) {
     const blogPost = document.createElement('div');
     blogPost.className = 'blog-post';
@@ -27,7 +28,7 @@ submitPost.addEventListener('submit', (e) => {
         username: usernameInput.value,
         date: postTimeInput.value,
         title: titleInput.value,
-        content: blogInput.value
+        content: blogInput.value.replace(/\n/g, '<br>') // Preserve line breaks
     };
 
     createPost(post);
