@@ -1,11 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sv">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://fonts.googleapis.com/css?family=Lexend Deca:200,400,500' rel='stylesheet'>
+    <script src="script.js" defer></script>
+    <title>Blogg</title>
 </head>
+
 <body>
-    
+
+    <header>
+        <h1>Blogg</h1>
+    </header>
+
+    <main>
+        <form id="submit-post">
+            <div id="username-div">
+                <label for ="username">Användarnamn:</label>
+                <input type="text" id="username" class="form-field" placeholder="Ange användarnamn">
+            </div>
+
+            <div id="date-div">
+                <label for="post-time">Datum:</label>
+                <input type="date" name="post-time" id="post-time" class="form-field">
+            </div>
+
+            <div id="title-div">
+                <label for="post-title">Titel:</label>
+                <input type="text" id="post-title" class="form-field" placeholder="Titel">
+            </div>
+
+            <div id="content-div">
+                <label for="blog-input">Ange din text:</label>
+                <textarea id="blog-input" class="form-field" rows="5" cols="50" placeholder="Skriv din text här..."></textarea>
+            </div>
+
+            <div id="submit-div">
+                <button type="submit">Skicka</button>
+            </div>
+        </form>
+
+        <div id="blog-post"></div>
+
+    </main>
+
+    <footer>
+        <p>2025 - codedbyjasmine</p>
+    </footer>
 </body>
 </html>
