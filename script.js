@@ -31,17 +31,42 @@ function createPost(post) {
     `;
 
     const likeButton = document.createElement('button');
-    likeButton.innerHTML = '&#9829; 0'; // Heart symbol with initial count
-    likeButton.className = 'like-button';
+    likeButton.innerHTML = '&#x1F496; 0'; // Heart symbol with initial count
+    likeButton.id = 'like-button';
     let likeCount = 0;
+
+    const dislikeButton = document.createElement('button');
+    dislikeButton.innerHTML = '&#128078; 0'; // Thumbs down symbol with initial count
+    dislikeButton.id = 'dislike-button';
+    let dislikeCount = 0;
 
     likeButton.addEventListener('click', () => {
         likeCount++;
-        likeButton.innerHTML = `&#9829; ${likeCount}`; // Update like count
+        likeButton.innerHTML = `&#x1F496; ${likeCount}`; // Update like count
     });
 
+    dislikeButton.addEventListener('click', () => {
+        dislikeCount++;
+        dislikeButton.innerHTML = `&#128078; ${dislikeCount}`; // Update dislike count
+    });
+
+    const deleteButton = document.createElement('button');
+    deleteButton.innerText = 'Radera inlägg';
+    deleteButton.id = 'delete-button';
+
+    deleteButton.addEventListener('click', () => {
+        blogPost.remove();
+    })
+
     blogPost.innerHTML = postContent;
-    blogPost.appendChild(likeButton);
+
+    const buttonRow = document.createElement('div');
+    buttonRow.className = 'button-row';
+    buttonRow.appendChild(likeButton);
+    buttonRow.appendChild(dislikeButton);
+    buttonRow.appendChild(deleteButton);
+
+    blogPost.appendChild(buttonRow);
 
     document.getElementById('blog-post').appendChild(blogPost);
 }

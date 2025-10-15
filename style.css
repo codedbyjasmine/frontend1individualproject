@@ -111,12 +111,27 @@ button {
     transition: 300ms;
 }
 
+.button-row {
+    display: flex;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+#new-post-button {
+    margin-bottom: 2rem;
+}
+
 #submit-button {
     margin-bottom: 2rem;
 }
 
-.like-button {
-    margin-top: 2rem;
+#like-button {
+    margin-right: 1rem;
+}
+
+#delete-button {
+    margin-left: auto;
+    background-color: #a52b2b;
 }
 
 button:hover {
