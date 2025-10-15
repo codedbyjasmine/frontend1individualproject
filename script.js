@@ -31,23 +31,23 @@ function createPost(post) {
     `;
 
     const likeButton = document.createElement('button');
-    likeButton.innerHTML = '&#x1F496; 0'; // Heart symbol with initial count
+    likeButton.innerHTML = '&#x1F496; 0';
     likeButton.id = 'like-button';
     let likeCount = 0;
 
     const dislikeButton = document.createElement('button');
-    dislikeButton.innerHTML = '&#128078; 0'; // Thumbs down symbol with initial count
+    dislikeButton.innerHTML = '&#128078; 0';
     dislikeButton.id = 'dislike-button';
     let dislikeCount = 0;
 
     likeButton.addEventListener('click', () => {
         likeCount++;
-        likeButton.innerHTML = `&#x1F496; ${likeCount}`; // Update like count
+        likeButton.innerHTML = `&#x1F496; ${likeCount}`;
     });
 
     dislikeButton.addEventListener('click', () => {
         dislikeCount++;
-        dislikeButton.innerHTML = `&#128078; ${dislikeCount}`; // Update dislike count
+        dislikeButton.innerHTML = `&#128078; ${dislikeCount}`;
     });
 
     const deleteButton = document.createElement('button');
@@ -78,12 +78,11 @@ submitPost.addEventListener('submit', (e) => {
         username: usernameInput.value,
         date: postDate,
         title: titleInput.value,
-        content: blogInput.value.replace(/\n/g, '<br>') // Preserve line breaks
+        content: blogInput.value.replace(/\n/g, '<br>')
     };
 
     createPost(post);
 
-    // Clear form fields after submission
     usernameInput.value = '';
     titleInput.value = '';
     blogInput.value = '';
