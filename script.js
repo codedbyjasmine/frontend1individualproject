@@ -12,6 +12,14 @@ let postDate = today.toLocaleDateString('sv-SE', {
     day: '2-digit'
 });
 
+
+// Scroll to top by clicking button
+document.getElementById('top-button').addEventListener('click', function(e) {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// Show form when clicking "Create Post" button
 addEventListener('click', (e) => {
     if (e.target === createPostButton) {
         document.getElementById('submit-post').classList.remove('hidden');
@@ -19,6 +27,8 @@ addEventListener('click', (e) => {
     }
 });
 
+
+// Create blog post
 function createPost(post) {
     const blogPost = document.createElement('div');
     blogPost.className = 'blog-post';
@@ -30,47 +40,111 @@ function createPost(post) {
         <p>${post.content}</p>
     `;
 
+
+    // Like button
     const likeButton = document.createElement('button');
     likeButton.innerHTML = '&#x1F496; 0';
     likeButton.id = 'like-button';
     let likeCount = 0;
-
-    const dislikeButton = document.createElement('button');
-    dislikeButton.innerHTML = '&#128078; 0';
-    dislikeButton.id = 'dislike-button';
-    let dislikeCount = 0;
-
+    
     likeButton.addEventListener('click', () => {
         likeCount++;
         likeButton.innerHTML = `&#x1F496; ${likeCount}`;
     });
+
+
+    // Dislike button
+    const dislikeButton = document.createElement('button');
+    dislikeButton.innerHTML = '&#128078; 0';
+    dislikeButton.id = 'dislike-button';
+    let dislikeCount = 0;
 
     dislikeButton.addEventListener('click', () => {
         dislikeCount++;
         dislikeButton.innerHTML = `&#128078; ${dislikeCount}`;
     });
 
+
+    // Delete button
     const deleteButton = document.createElement('button');
     deleteButton.innerText = 'Radera inlägg';
     deleteButton.id = 'delete-button';
 
     deleteButton.addEventListener('click', () => {
-        blogPost.remove();
-    })
+        if (confirm('Är du säker på att du vill ta bort inlägget?')) {
+            blogPost.remove();
+        }
+    });
+
+    
+    // Comment button
+    const commentButton = document.createElement('button');
+    commentButton.innerText = 'Kommentera';
+    commentButton.id = 'comment-button';
+    commentButton.style.marginTop = '1rem';
+    
+    commentButton.addEventListener('click', () => {
+        commentSection.classList.toggle('hidden');
+    });
+    
+    // Comment section
+    const commentSection = document.createElement('div');
+    commentSection.className = 'comment-section hidden';
+    commentSection.style.marginTop = '1rem';
+
+    const commentNameInput = document.createElement('input');
+    commentNameInput.type = 'text';
+    commentNameInput.placeholder = 'Ditt namn';
+    commentSection.appendChild(commentNameInput);
+    
+    const commentInput = document.createElement('textarea');
+    commentInput.placeholder = 'Skriv en kommentar...';
+    commentSection.appendChild(commentInput);
+
+    const addCommentButton = document.createElement('button');
+    addCommentButton.innerText = 'Skicka';
+    commentSection.appendChild(addCommentButton);
 
     blogPost.innerHTML = postContent;
-
+    
+    // Create div for buttons
     const buttonRow = document.createElement('div');
     buttonRow.className = 'button-row';
     buttonRow.appendChild(likeButton);
     buttonRow.appendChild(dislikeButton);
     buttonRow.appendChild(deleteButton);
-
+    
     blogPost.appendChild(buttonRow);
+    
+    // Add line break
+    const hr = document.createElement('hr');
+    blogPost.appendChild(hr);
+
+    blogPost.appendChild(commentButton);
+    blogPost.appendChild(commentSection);
+    
+    // Handle comment submission
+    addCommentButton.addEventListener('click', () => {
+        if (commentNameInput.value && commentInput.value) {
+            const comment = document.createElement('div');
+            comment.className = 'comment';
+            comment.innerHTML = `<h4>${commentNameInput.value} ${postDate}:</h4><p>${commentInput.value.replace(/\n/g, '<br>')}</p>`;
+            comment.style.marginTop = '2rem';
+            blogPost.appendChild(comment);
+            commentNameInput.value = '';
+            commentInput.value = '';
+            commentSection.classList.add('hidden');
+        }
+
+    });
+
+    blogPost.appendChild(commentSection);
 
     document.getElementById('blog-post').appendChild(blogPost);
 }
 
+
+// Handle form submission
 submitPost.addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -83,6 +157,7 @@ submitPost.addEventListener('submit', (e) => {
 
     createPost(post);
 
+    // Clear form and hide it
     usernameInput.value = '';
     titleInput.value = '';
     blogInput.value = '';
