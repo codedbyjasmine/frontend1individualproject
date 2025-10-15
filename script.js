@@ -1,9 +1,23 @@
 const submitPost = document.getElementById('submit-post');
 const usernameInput = document.getElementById('username');
-const postTimeInput = document.getElementById('post-time');
 const titleInput = document.getElementById('post-title');
 const blogInput = document.getElementById('blog-input');
+const today = new Date();
+const createPostButton = document.getElementById('new-post-button');
 
+
+let postDate = today.toLocaleDateString('sv-SE', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit'
+});
+
+addEventListener('click', (e) => {
+    if (e.target === createPostButton) {
+        document.getElementById('submit-post').classList.remove('hidden');
+        createPostButton.classList.add('hidden');
+    }
+});
 
 function createPost(post) {
     const blogPost = document.createElement('div');
@@ -16,7 +30,18 @@ function createPost(post) {
         <p>${post.content}</p>
     `;
 
+    const likeButton = document.createElement('button');
+    likeButton.innerHTML = '&#9829; 0'; // Heart symbol with initial count
+    likeButton.className = 'like-button';
+    let likeCount = 0;
+
+    likeButton.addEventListener('click', () => {
+        likeCount++;
+        likeButton.innerHTML = `&#9829; ${likeCount}`; // Update like count
+    });
+
     blogPost.innerHTML = postContent;
+    blogPost.appendChild(likeButton);
 
     document.getElementById('blog-post').appendChild(blogPost);
 }
@@ -26,7 +51,7 @@ submitPost.addEventListener('submit', (e) => {
 
     const post = {
         username: usernameInput.value,
-        date: postTimeInput.value,
+        date: postDate,
         title: titleInput.value,
         content: blogInput.value.replace(/\n/g, '<br>') // Preserve line breaks
     };
@@ -35,7 +60,9 @@ submitPost.addEventListener('submit', (e) => {
 
     // Clear form fields after submission
     usernameInput.value = '';
-    postTimeInput.value = '';
     titleInput.value = '';
     blogInput.value = '';
+
+    document.getElementById('submit-post').classList.add('hidden');
+    createPostButton.classList.remove('hidden');
 });

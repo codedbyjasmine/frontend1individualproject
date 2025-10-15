@@ -16,29 +16,26 @@
     </header>
 
     <main>
-        <form id="submit-post">
-            <div id="username-div">
-                <label for ="username">Användarnamn:</label>
-                <input type="text" id="username" class="form-field" placeholder="Ange användarnamn">
-            </div>
+        <button id="new-post-button">Skapa inlägg</button>
 
-            <div id="date-div">
-                <label for="post-time">Datum:</label>
-                <input type="date" name="post-time" id="post-time" class="form-field">
+        <form id="submit-post" class="hidden">
+            <div id="username-div">
+                <label for ="username">Namn:</label>
+                <input type="text" id="username" class="form-field" placeholder="Ange ditt namn" required>
             </div>
 
             <div id="title-div">
                 <label for="post-title">Titel:</label>
-                <input type="text" id="post-title" class="form-field" placeholder="Titel">
+                <input type="text" id="post-title" class="form-field" placeholder="Ange en titel" required>
             </div>
 
             <div id="content-div">
                 <label for="blog-input">Ange din text:</label>
-                <textarea id="blog-input" class="form-field" rows="5" cols="50" placeholder="Skriv din text här..."></textarea>
+                <textarea id="blog-input" class="form-field" rows="5" cols="50" placeholder="Skriv din text här..." required></textarea>
             </div>
 
             <div id="submit-div">
-                <button type="submit">Skicka</button>
+                <button id="submit-button" type="submit">Skicka</button>
             </div>
         </form>
 
