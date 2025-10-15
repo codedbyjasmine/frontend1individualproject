@@ -35,8 +35,8 @@ function createPost(post) {
 
     const postContent = `
         <h2>${post.title}</h2>
-        <h4>Författare: ${post.username}</h4>
-        <h4>Datum: ${post.date}</h4>
+        <h4>Author: ${post.username}</h4>
+        <h4>Date: ${post.date}</h4>
         <p>${post.content}</p>
     `;
 
@@ -67,11 +67,11 @@ function createPost(post) {
 
     // Delete button
     const deleteButton = document.createElement('button');
-    deleteButton.innerText = 'Radera inlägg';
+    deleteButton.innerText = 'Delete Post';
     deleteButton.id = 'delete-button';
 
     deleteButton.addEventListener('click', () => {
-        if (confirm('Är du säker på att du vill ta bort inlägget?')) {
+        if (confirm('Do you want to delete this post?')) {
             blogPost.remove();
         }
     });
@@ -79,7 +79,7 @@ function createPost(post) {
     
     // Comment button
     const commentButton = document.createElement('button');
-    commentButton.innerText = 'Kommentera';
+    commentButton.innerText = 'Comment';
     commentButton.id = 'comment-button';
     commentButton.style.marginTop = '1rem';
     
@@ -94,15 +94,15 @@ function createPost(post) {
 
     const commentNameInput = document.createElement('input');
     commentNameInput.type = 'text';
-    commentNameInput.placeholder = 'Ditt namn';
+    commentNameInput.placeholder = 'Your name';
     commentSection.appendChild(commentNameInput);
     
     const commentInput = document.createElement('textarea');
-    commentInput.placeholder = 'Skriv en kommentar...';
+    commentInput.placeholder = 'Write a comment...';
     commentSection.appendChild(commentInput);
 
     const addCommentButton = document.createElement('button');
-    addCommentButton.innerText = 'Skicka';
+    addCommentButton.innerText = 'Send';
     commentSection.appendChild(addCommentButton);
 
     blogPost.innerHTML = postContent;
