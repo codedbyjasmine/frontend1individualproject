@@ -45,7 +45,7 @@ form {
     align-items: center;
     justify-content: center;
     gap: 1rem;
-    width: 50%;
+    width: 40dvw;
     border: 1px solid #ffffff;
     padding: 1rem;
     border-radius: 7px;
@@ -94,8 +94,9 @@ input, textarea, label {
     border: 1px solid #aaa;
     border-radius: 5px;
     padding: 1rem;
-    width: 100%;
+    width: 40dvw;
     text-align: left;
+    margin-bottom: 1rem;
 }
 
 button {
