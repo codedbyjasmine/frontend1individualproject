@@ -5,16 +5,21 @@
     transition: 50ms;
 }
 
+
+
+/* Global Styles */
+/* Body Styles */
 body {
     min-height: 100dvh;
     padding-top: 1rem;
     background-color: #262724;
-    background: linear-gradient(180deg, #1c1d18 0%, #2a2335 100%);
+    background: linear-gradient(180deg, #0d0d0e 0%, #2a2335 100%);
     color: white;
     font-family: 'Lexend Deca', sans-serif;
     font-weight: 200;
 }
 
+/* Header Styles */
 header {
     width: 100%;
     text-align: center;
@@ -22,6 +27,7 @@ header {
     margin-bottom: 1rem;
 }
 
+/* Main Styles */
 main {
     width: 100%;
     padding: 2rem;
@@ -34,10 +40,47 @@ main {
     margin-bottom: 1rem;
 }
 
+
+
+/* Text Styles */
+h1 {
+    color: #aa7cff;
+    font-weight: 500;
+    font-size: 3rem;
+}
+
+h2 {
+    margin-bottom: 1rem;
+    font-weight: 400;
+}
+
+h4 {
+    font-size: 0.9rem;
+}
+
+label, h4 {
+    color: #d0c0fd;
+    font-weight: 400;
+    font-size: 1.1rem;
+}
+
+p {
+    margin-top: 0.6rem;
+}
+
+
+
+
+/* Hidden Elements */
 .hidden {
     display: none !important;
 }
 
+
+
+
+/* Form Styles */
+/* Submit Post Form */
 #submit-post {
     display: flex;
     flex-direction: column;
@@ -49,14 +92,7 @@ main {
     border-radius: 7px;
 }
 
-input, textarea, label, select {
-    display: block;
-    box-sizing: border-box;
-    max-width: 100%;
-    width: 30dvw;
-    color: white;
-}
-
+/* Form Field Styles */
 .form-field {
     padding: 0.5rem;
     margin: 0.5rem 0;
@@ -66,6 +102,18 @@ input, textarea, label, select {
     background-color: #515152;
 }
 
+/* Comment Section Styles */
+.comment-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+/* Blog Post Styles */
 .blog-post {
     width: 40dvw;
     padding: 2rem;
@@ -76,6 +124,31 @@ input, textarea, label, select {
     margin-bottom: 2rem;
 }
 
+/* Form Element Styles */
+input, textarea, label, select {
+    display: block;
+    box-sizing: border-box;
+    max-width: 100%;
+    width: 30dvw;
+    color: white;;
+}
+
+/* Input and Textarea Styles */
+input, textarea {
+    background-color: #515152;
+    border: 1px solid #e2e0e4;
+    border-radius: 5px;
+    font-family: 'Lexend Deca', sans-serif;
+    padding: 0.5rem;
+}
+
+/* Textarea Styles */
+textarea {
+    height: 10rem;
+    resize: vertical;
+}
+
+/* Autofill Styles */
 input:-webkit-autofill,
 input:-webkit-autofill:hover, 
 input:-webkit-autofill:focus, 
@@ -90,15 +163,15 @@ textarea:-webkit-autofill:active
     color: white !important;
 }
 
-textarea {
-    height: 10rem;
-    resize: vertical;
-}
-
+/* Focus Styles */
 input:focus, textarea:focus {
     outline: 3px solid #aa7cff;
 }
 
+
+
+
+/* Button Styles */
 button {
     background-color: #aa7cff;
     color: white;
@@ -115,9 +188,11 @@ button {
     display: flex;
     align-items: center;
     margin-top: 2rem;
+    margin-bottom: 1rem;
 }
 
 #new-post-button {
+    margin-top: 10rem;
     margin-bottom: 2rem;
 }
 
@@ -134,59 +209,51 @@ button {
     background-color: #a52b2b;
 }
 
+#top-button {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    background-color: rgba(170, 124, 255, 0.2);
+}
+
 button:hover {
     background-color: #8e5bec;
 }
 
-h1 {
-    color: #aa7cff;
-    font-weight: 500;
-    font-size: 3rem;
-}
 
-label, h4 {
-    color: #d0c0fd;
-    font-weight: 400;
-    font-size: 1.1rem;
-}
 
-h2 {
-    margin-bottom: 1rem;
-    font-weight: 400;
-}
 
-h4 {
-    font-size: 0.9rem;
-}
-
-p {
-    margin-top: 0.6rem;
-}
-
+/* Footer */
 footer {
     font-size: 0.8rem;
     text-align: center;
     margin-bottom: 3rem;
 }
 
-@media only screen and (max-width: 1024px) {
 
+
+
+/* Responsive Design iPads */
+@media only screen and (max-width: 1024px) {
+    
     .blog-post{
         font-size: 1.3rem;
     }
-
+    
     h1 {
         font-size: 3rem;
     }
-
+    
     h2 {
         font-size: 1.5rem;
     }
-
+    
     label, h4 {
         font-size: 1.3rem;
     }
-
+    
     button {
         font-size: 1.2rem;
     }   
@@ -209,6 +276,9 @@ footer {
     }
 }
 
+
+
+/* Responsive Design Mobile */
 @media only screen and (max-width: 480px) {
     
     .blog-post{
@@ -245,7 +315,7 @@ footer {
 
     input:focus, textarea:focus {
     outline: 2px solid #aa7cff;
-}
+    }
 
     footer{
         font-size: 0.7rem;
